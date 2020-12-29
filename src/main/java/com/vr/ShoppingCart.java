@@ -1,9 +1,18 @@
 package com.vr;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShoppingCart {
 
-	public int getItems() {
-		return 0;
+	private final List<Item> cartItems = new ArrayList<>();
+
+	public boolean hasItems() {
+		return !cartItems.isEmpty();
+	}
+
+	public void addItem(Item item) {
+		cartItems.add(item);
 	}
 
 }
