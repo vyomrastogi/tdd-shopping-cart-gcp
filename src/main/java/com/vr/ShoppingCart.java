@@ -2,6 +2,7 @@ package com.vr;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ShoppingCart {
@@ -28,6 +29,10 @@ public class ShoppingCart {
 
 	public int getQuantity(Item item) {
 		return cartItems.getOrDefault(item, 0);
+	}
+
+	public Set<CartItem> getCartItem() {
+		return cartItems.entrySet().parallelStream().map(CartItem::new).collect(Collectors.toSet());
 	}
 
 }
