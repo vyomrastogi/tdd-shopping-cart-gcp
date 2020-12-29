@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -78,11 +78,26 @@ public class ShoppingCartTest {
 		double expectedBabraElitePrice = Item.BABRA_ELITE.getPrice() * 2;
 		assertEquals(expectedBabraElitePrice, getPriceOfItemFromList(actualList, Item.BABRA_ELITE));
 	}
+	
+	/**
+	 * Test to assert that item on sale are highlighted
+	 */
+	@Test
+	public void getItemizedList_WithItemOnSale_test() {
+		shoppingCart.addItem(Item.PERFUME);
+		
+		Set<CartItem> actualList = shoppingCart.getCartItem();
+		assertTrue(getCartItem(actualList,Item.PERFUME).get().isOnSale());
+	}
 
 	private double getPriceOfItemFromList(Set<CartItem> cartItems, Item item) {
-		return cartItems.stream().filter(CartItem.isItem(item))
-				.findFirst()
+		return getCartItem(cartItems,item)
 				.map(CartItem::getTotalPrice)
 				.orElseGet(() -> 0.0);
+	}
+	
+	private Optional<CartItem> getCartItem(Set<CartItem> cartItems, Item item){
+		return cartItems.stream().filter(CartItem.isItem(item))
+				.findFirst();
 	}
 }
