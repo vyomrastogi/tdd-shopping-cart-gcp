@@ -2,9 +2,9 @@
 
  - follow tdd development approach
  - experiment with micronaut library in place of spring-boot
- - experiment deployment to gcp as containerized application
+ - experiment deployment to gcp as container application
 
-### AC 
+#### Acceptance Criteria 
 
 Develop an API to request against shopping cart, 
 
