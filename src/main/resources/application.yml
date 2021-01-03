@@ -1,3 +1,6 @@
 micronaut:
+  server: 
+    port: 8086
   application:
     name: tddShoppingCartGcp
+    

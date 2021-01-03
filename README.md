@@ -15,3 +15,8 @@ Develop an API to request against shopping cart,
 - Given I have a cart with items that are not on sale, when I add an item that's on sale, I expect to see it highlighted.
 - Given I have a cart with items, when I remove an item, then I expect the cart to display the updated itemized list.
 - Given I have one item in my cart with a quantity of 3, when I remove one, then I expect the cart to have 2 of that item.
+
+
+#### Learnings 
+
+- To run junit5 based tests with junit plugin in eclipse / vscode, annotation processing is required. This is natively available in IntelliJ 2019.x build. To resolve this add ` id "com.diffplug.eclipse.apt" version "3.26.0"` to plugin in gradle and run eclipseJDTApt task. This enables annotationProcessor.
